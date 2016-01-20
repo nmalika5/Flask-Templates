@@ -1,4 +1,4 @@
-from random import choice
+from random import choice, sample
 
 from flask import Flask, render_template, request
 
@@ -12,13 +12,14 @@ AWESOMENESS = [
     'brilliant', 'ducky', 'coolio', 'incredible', 'wonderful', 'smashing', 'lovely']
 
 
+# @app.route('/')
+# def start_here():
+#     """Homepage."""
+
+#     return "Hi! This is the home page."
+
+
 @app.route('/')
-def start_here():
-    """Homepage."""
-
-    return "Hi! This is the home page."
-
-
 @app.route('/hello')
 def say_hello():
     """Save hello to user."""
@@ -32,11 +33,12 @@ def greet_person():
 
     player = request.args.get("person")
 
-    compliment = choice(AWESOMENESS)
-
+    # compliment = choice(AWESOMENESS)
+    compliment = sample(AWESOMENESS, 3)
+    print compliment
     return render_template("compliment.html",
                            person=player,
-                           compliment=compliment)
+                           compliments=compliment)
 
 @app.route('/game')
 def show_game_form():
@@ -51,14 +53,17 @@ def show_game_form():
     else:
         return render_template("goodbye.html")
 
-@app.route('/madlib', methods=["POST"])
+@app.route('/madlib', methods=["POST","GET"])
 def show_madlib():
     """Shows the madlib"""
 
-    person = request.args.get("first")
-    favourite_color = request.args.get("color")
-    person_noun = request.args.get("noun")
-    adjective = request.args.get("theadjective")
+    print request.method
+
+    
+    person = request.form.get("first")
+    favourite_color = request.form.get("color")
+    person_noun = request.form.get("noun")
+    adjective = request.form.get("theadjective")
 
     madlibs_html = ["madlib1.html", "madlib2.html", "madlib3.html" ]
 

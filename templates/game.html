@@ -1,10 +1,13 @@
-<!doctype html>
-<html>
-<head>
-  <title>A Game</title>
-</head>
-<body>
-    <h1> Welcome to our Game! </h1>
+
+{% extends 'base.html' %}
+
+{% block title %} Our Game {% endblock %}
+
+{% block content %}
+
+<h1> Welcome to our Game! </h1>
+
+<img src="/static/img/kanye2.png">
 
     <form action="/madlib" method="POST">
         Answer our questions!
@@ -28,5 +31,8 @@
 
         <input type="submit">
     </form>
-</body>
-</html>
+
+
+{% endblock %}
+
+

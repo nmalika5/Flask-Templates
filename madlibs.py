@@ -51,11 +51,26 @@ def show_game_form():
     else:
         return render_template("goodbye.html")
 
-@app.route('/madlib')
+@app.route('/madlib', methods=["POST"])
 def show_madlib():
     """Shows the madlib"""
 
-    return render_template("madlib.html")
+    person = request.args.get("first")
+    favourite_color = request.args.get("color")
+    person_noun = request.args.get("noun")
+    adjective = request.args.get("theadjective")
+
+    madlibs_html = ["madlib1.html", "madlib2.html", "madlib3.html" ]
+
+    render_random = choice(madlibs_html)
+    print render_random
+    # print adjective
+    return render_template(render_random,
+                            name = person,
+                            noun = person_noun,
+                            color = favourite_color,
+                            adjective = adjective
+                            )
 
 if __name__ == '__main__':
     # debug=True gives us error messages in the browser and also "reloads" our web app

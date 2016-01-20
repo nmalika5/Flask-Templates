@@ -6,7 +6,7 @@
 <body>
     <h1> Welcome to our Game! </h1>
 
-    <form action="/madlib">
+    <form action="/madlib" method="POST">
         Answer our questions!
         <p>
         <label>First Name</label>
@@ -19,12 +19,14 @@
         <input type="text" name="noun">
         <p>
         Adjective:
-        <select name="adjective">
-            <label><option value="smart">Smart</option></label>
-            <label><option value="hungry">Hungry</option></label>
-            <label><option value="bored">Bored</option></label>
-            <label><option value="stealthy">Stealthy</option></label>
+        <select name="theadjective">
+            <label><option value="punk">Punk</option></label>
+            <label><option value="junk">Junk</option></label>
+            <label><option value="scrub">Scrub</option></label>
+            <label><option value="hunk">Hunk</option></label>
         </select>
+
+        <input type="submit">
     </form>
 </body>
 </html>
